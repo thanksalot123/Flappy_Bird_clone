@@ -1,8 +1,5 @@
 import pygame, sys, random
 
-
-game_active = True
-
 def draw_floor():
     screen.blit(bg_base,(pos_x,500))
     screen.blit(bg_base,(pos_x+376,500))
@@ -38,27 +35,31 @@ def check_coll(pipes):
 
 pygame.init()
 
+#Game Variables
 gravity = 0.20
 brd_mov = 0
+game_active = True
 
 screen=pygame.display.set_mode((376,600)) #this bad boy starts the game
 clock = pygame.time.Clock() #this thing here is for frame rate'
-bg_surface = pygame.image.load('F:/games_by_ME/assets/sprites/background-day.png').convert()#this bad boy helps to run the file easily damn
+
+#background
+bg_surface = pygame.image.load('F:/games_by_ME/assets/sprites/background-night.png').convert()#this bad boy helps to run the file easily damn
 bg_surface = pygame.transform.scale(bg_surface, (376, 600))
 bg_base = pygame.image.load('F:/games_by_ME/assets/sprites/base.png').convert()
 bg_base = pygame.transform.scale(bg_base, (376,100))
 pos_x=0
 
 #bird
-bird_sur = pygame.image.load('F:/games_by_ME/assets/sprites/redbird-midflap.png').convert()
+bird_sur = pygame.image.load('F:/games_by_ME/assets/sprites/bluebird-midflap.png').convert()
 bird_sur = pygame.transform.scale(bird_sur,(45,32))
 bird_rect = bird_sur.get_rect(center = (60,200))
 
-
+#pipes
 pipe_sur = pygame.image.load('F:/games_by_ME/assets/sprites/pipe-green.png').convert()
 pipe_sur = pygame.transform.scale(pipe_sur,(80,500))
 pipe_list = []
-SPAWNPIPE = pygame.USEREVENT
+SPAWNPIPE = pygame.USEREVENT              #Creating event to spawn pipes at regular intervals
 pygame.time.set_timer(SPAWNPIPE,1200)
 pipe_height = [300,200,380]
 
